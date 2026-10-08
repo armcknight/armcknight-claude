@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.1] 2026-10-08
+
 ### Fixed
 - `pr` skipped the screenshot UI-test step when it found earlier work for the branch — a finished review, an existing commit, or a closed PR whose description it copied. It now makes the screenshot decision on every run, writes the description from the current branch instead of copying an earlier PR's, and states the decision in the description: the test it added or named, or why none applies.
 
