@@ -6,6 +6,7 @@ argument-hint: "[--autonomous] [--draft]"
 First: perform /armcknight-claude:review
 
 Then:
+- Decide about screenshots on every run, from the branch as it is now. Do not skip this step because the code is already committed, a review already ran, or an earlier PR for this branch exists, open or closed: the earlier work may predate this step.
 - If the change is something an end user can see — a new feature, a changed screen or flow, or a fix to a visible bug — and the repo has a UI-test target that takes screenshots (for example an iOS app whose CI passes `ui-screenshots-scheme` to `armcknight/workflows`' `ios-ci.yml`), add or extend a UI test there that shows it:
     - Launch the app into seeded, deterministic state the way the existing UI tests do, go to the changed UI, and assert what the change is meant to do, so the test also proves the change.
     - Attach a screenshot at each step a reviewer should see, with the target's existing screenshot helper (an `XCTAttachment` kept with `.keepAlways`) and a short, descriptive name. For a fix, capture the state that used to be wrong.
@@ -16,8 +17,9 @@ Then:
 - Open the pull request, supplying the title and description:
     - Use `direnv exec linctl` to grab context from the original issue to write a top-line problem/solution statement in the PR description.
     - Use the [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) format, scoping to specific components when possible like `fix(AutofixStatusView): <message>` or `feat(seer setup): <message>` for the PR title.
+    - Write the description from the branch as it is now. Do not copy an earlier PR's description, even one for the same commit: it may lack the screenshot decision.
     - The description should summarize the solution strategy and pertinent implementation details.
-    - If you added or changed a UI test for screenshots, say which one, and that CI will comment its screenshots on the PR. Include the `ui-screenshots` marker when you name tests there; CI reads the description of the push that started it, so write it before pushing again, not after.
+    - State the screenshot decision in the description. If you added, changed or named a UI test for screenshots, say which one, and that CI will comment its screenshots on the PR; include the `ui-screenshots` marker when you name tests there. CI reads the description of the push that started it, so write it before pushing again, not after. Otherwise, say in one sentence why no screenshot test applies: the change is not user-facing, or the repo has no screenshot UI-test target.
     - Note the linear issue ID in the description.
     - If `$ARGUMENTS` contains `--autonomous`, use `gh pr create` (no `--web`) so no browser is opened. Otherwise use `gh pr create --web`.
     - If `$ARGUMENTS` contains `--draft`, add `--draft` to the `gh pr create` invocation so the PR is opened in draft state.
