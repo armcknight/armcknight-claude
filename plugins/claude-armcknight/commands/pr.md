@@ -6,11 +6,18 @@ argument-hint: "[--autonomous] [--draft]"
 First: perform /claude-armcknight:review
 
 Then:
+- If the change is something an end user can see — a new feature, a changed screen or flow, or a fix to a visible bug — and the repo has a UI-test target that takes screenshots (for example an iOS app whose CI passes `ui-screenshots-scheme` to `armcknight/workflows`' `ios-ci.yml`), add or extend a UI test there that shows it:
+    - Launch the app into seeded, deterministic state the way the existing UI tests do, go to the changed UI, and assert what the change is meant to do, so the test also proves the change.
+    - Attach a screenshot at each step a reviewer should see, with the target's existing screenshot helper (an `XCTAttachment` kept with `.keepAlways`) and a short, descriptive name. For a fix, capture the state that used to be wrong.
+    - Put each new test in its own `XCTestCase` class, or change an existing class only when the change belongs there: CI runs every test class in a file the PR adds or changes and comments their screenshots on the PR.
+    - If an existing test that the PR does not change already goes to the changed UI — common for a fix — name it instead of writing a new one, in a hidden marker in the PR description: `<!-- ui-screenshots: <class>/<method> -->`, with IDs separated by spaces or commas. Also use the marker to narrow a changed class down to the methods that show the change.
+    - Run the new test locally and confirm it passes before continuing.
 - Commit any outstanding work in the working index.
 - Open the pull request, supplying the title and description:
     - Use `direnv exec linctl` to grab context from the original issue to write a top-line problem/solution statement in the PR description.
     - Use the [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) format, scoping to specific components when possible like `fix(AutofixStatusView): <message>` or `feat(seer setup): <message>` for the PR title.
     - The description should summarize the solution strategy and pertinent implementation details.
+    - If you added or changed a UI test for screenshots, say which one, and that CI will comment its screenshots on the PR. Include the `ui-screenshots` marker when you name tests there; CI reads the description of the push that started it, so write it before pushing again, not after.
     - Note the linear issue ID in the description.
     - If `$ARGUMENTS` contains `--autonomous`, use `gh pr create` (no `--web`) so no browser is opened. Otherwise use `gh pr create --web`.
     - If `$ARGUMENTS` contains `--draft`, add `--draft` to the `gh pr create` invocation so the PR is opened in draft state.

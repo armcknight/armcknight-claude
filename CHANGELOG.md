@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- `pr` adds or extends a screenshot UI test for a change an end user can see, in repos that have such a target, so CI can comment the screenshots on the PR. It names the test in the PR description, and names existing tests that already show the change in a `<!-- ui-screenshots: … -->` marker there.
+
 ## [0.1.1] 2026-08-10
 
 ### Added
