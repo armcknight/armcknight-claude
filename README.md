@@ -6,7 +6,7 @@
 
 ```
 /plugin marketplace add armcknight/claude-armcknight
-/plugin install claude-armcknight@armcknight
+/plugin install armcknight-claude@armcknight
 ```
 
 To work on the plugins locally, add this checkout as a directory marketplace instead:
@@ -17,21 +17,21 @@ To work on the plugins locally, add this checkout as a directory marketplace ins
 
 ## Plugins
 
-### `claude-armcknight`
+### `armcknight-claude`
 
 An issue-to-merge workflow. Each command is one step of the loop this repository's author runs on every ticket: pick up a Linear issue, do the work, review it, commit, open a PR, watch CI, merge, and clean up after the worktree.
 
 | Command | What it does |
 | --- | --- |
-| `/claude-armcknight:start` | Read the Linear issue matching the current branch, move it to In Progress, check assignment, and write a plan. Does nothing on `main`. |
-| `/claude-armcknight:review` | Diff the branch against a freshly fetched base branch. Look for tests, READMEs and changelog entries that need updating, and for code orphaned by the change. |
-| `/claude-armcknight:commit` | Run `/claude-armcknight:review`, then stage and commit in [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) format. |
-| `/claude-armcknight:pr` | Run `/claude-armcknight:review`, commit outstanding work, open a PR titled and described from the Linear issue, then iterate until CI is green and review comments are addressed. Accepts `--autonomous` and `--draft`. |
-| `/claude-armcknight:merge` | Squash-merge a branch into `main` with a generated conventional-commit message, review the result, update the issue, and refresh affected READMEs. |
-| `/claude-armcknight:finish` | Close out a work stream: tear down the worktree, mark the Linear issue Done, and run `/claude-armcknight:cleanup`. |
-| `/claude-armcknight:cleanup` | Remove the Xcode DerivedData directory belonging to a worktree. |
+| `/armcknight-claude:start` | Read the Linear issue matching the current branch, move it to In Progress, check assignment, and write a plan. Does nothing on `main`. |
+| `/armcknight-claude:review` | Diff the branch against a freshly fetched base branch. Look for tests, READMEs and changelog entries that need updating, and for code orphaned by the change. |
+| `/armcknight-claude:commit` | Run `/armcknight-claude:review`, then stage and commit in [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) format. |
+| `/armcknight-claude:pr` | Run `/armcknight-claude:review`, commit outstanding work, open a PR titled and described from the Linear issue, then iterate until CI is green and review comments are addressed. Accepts `--autonomous` and `--draft`. |
+| `/armcknight-claude:merge` | Squash-merge a branch into `main` with a generated conventional-commit message, review the result, update the issue, and refresh affected READMEs. |
+| `/armcknight-claude:finish` | Close out a work stream: tear down the worktree, mark the Linear issue Done, and run `/armcknight-claude:cleanup`. |
+| `/armcknight-claude:cleanup` | Remove the Xcode DerivedData directory belonging to a worktree. |
 
-Commands are namespaced by plugin, so `/pr` becomes `/claude-armcknight:pr`. The commands call each other by the namespaced name.
+Commands are namespaced by plugin, so `/pr` becomes `/armcknight-claude:pr`. The commands call each other by the namespaced name.
 
 ## Requirements
 
@@ -55,12 +55,12 @@ make init
 
 These commands were written for one person's setup and published as a reference. Read them before you install them — they are short, and they are opinionated in ways that will not suit every project.
 
-- **Branch names encode a Linear issue.** `/claude-armcknight:start` derives the issue ID from the current branch and does nothing if it cannot.
-- **`/claude-armcknight:pr` is Sentry-specific in one step.** After CI passes it comments `@sentry review` to trigger a Seer review, then addresses Seer's comments. On a non-Sentry repository, delete that step.
-- **`/claude-armcknight:review` names specific MCP servers** — XcodeBuildMCP, xcode-index-mcp, swiftlens and Sentry. Without them, those checks are skipped.
-- **`/claude-armcknight:cleanup` is Xcode-only.** It removes a DerivedData directory and does nothing useful for a non-Xcode project.
-- **`/claude-armcknight:start` checks that the issue is assigned to you** and reports if it was previously assigned to somebody else.
-- **`/claude-armcknight:merge` and `/claude-armcknight:finish` take the branch name as their first argument** — `/claude-armcknight:merge my-branch`. They do not infer it from the current checkout.
+- **Branch names encode a Linear issue.** `/armcknight-claude:start` derives the issue ID from the current branch and does nothing if it cannot.
+- **`/armcknight-claude:pr` is Sentry-specific in one step.** After CI passes it comments `@sentry review` to trigger a Seer review, then addresses Seer's comments. On a non-Sentry repository, delete that step.
+- **`/armcknight-claude:review` names specific MCP servers** — XcodeBuildMCP, xcode-index-mcp, swiftlens and Sentry. Without them, those checks are skipped.
+- **`/armcknight-claude:cleanup` is Xcode-only.** It removes a DerivedData directory and does nothing useful for a non-Xcode project.
+- **`/armcknight-claude:start` checks that the issue is assigned to you** and reports if it was previously assigned to somebody else.
+- **`/armcknight-claude:merge` and `/armcknight-claude:finish` take the branch name as their first argument** — `/armcknight-claude:merge my-branch`. They do not infer it from the current checkout.
 
 ## Arguments
 
@@ -75,7 +75,7 @@ Declare them in the command's frontmatter with `argument-hint`, which is what th
 
 ## Used by
 
-[superlinear](https://github.com/armcknight/superlinear) drives `/claude-armcknight:start`, `/claude-armcknight:commit` and `/claude-armcknight:pr --autonomous` to take a Linear issue to an open pull request without a human in the loop.
+[superlinear](https://github.com/armcknight/superlinear) drives `/armcknight-claude:start`, `/armcknight-claude:commit` and `/armcknight-claude:pr --autonomous` to take a Linear issue to an open pull request without a human in the loop.
 
 ## Releasing
 

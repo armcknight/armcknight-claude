@@ -3,7 +3,7 @@ description: "Review, commit, open a PR described from the Linear issue, then it
 argument-hint: "[--autonomous] [--draft]"
 ---
 
-First: perform /claude-armcknight:review
+First: perform /armcknight-claude:review
 
 Then:
 - If the change is something an end user can see — a new feature, a changed screen or flow, or a fix to a visible bug — and the repo has a UI-test target that takes screenshots (for example an iOS app whose CI passes `ui-screenshots-scheme` to `armcknight/workflows`' `ios-ci.yml`), add or extend a UI test there that shows it:

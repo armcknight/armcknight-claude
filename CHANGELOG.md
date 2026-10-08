@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- **Breaking:** the plugin is renamed from `claude-armcknight` to `armcknight-claude`, so every command moves from `/claude-armcknight:<command>` to `/armcknight-claude:<command>`. Claude Code now reserves plugin names that start with `claude-`, and `claude plugin validate` rejected the old one, which blocked every release. The marketplace (`armcknight`) and the repository keep their names.
+
+  To migrate an install: `/plugin uninstall claude-armcknight@armcknight`, then `/plugin marketplace update armcknight` and `/plugin install armcknight-claude@armcknight`. Update anything that calls the commands by name, such as [superlinear](https://github.com/armcknight/superlinear).
+
 ### Added
 - `pr` adds or extends a screenshot UI test for a change an end user can see, in repos that have such a target, so CI can comment the screenshots on the PR. It names the test in the PR description, and names existing tests that already show the change in a `<!-- ui-screenshots: … -->` marker there.
 

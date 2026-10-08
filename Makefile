@@ -1,4 +1,4 @@
-PLUGIN         = plugins/claude-armcknight
+PLUGIN         = plugins/armcknight-claude
 MANIFEST       = $(PLUGIN)/.claude-plugin/plugin.json
 CHANGELOG      = CHANGELOG.md
 # vrsn's --key cannot read JSON, so the version is located by regex instead.

@@ -8,12 +8,12 @@
   },
   "plugins": [
     {
-      "name": "claude-armcknight",
+      "name": "armcknight-claude",
       "description": "An issue-to-merge workflow for Claude Code: start a Linear issue, review, commit, open a PR, watch CI, merge, and clean up.",
       "author": {
         "name": "Andrew McKnight"
       },
-      "source": "./plugins/claude-armcknight",
+      "source": "./plugins/armcknight-claude",
       "category": "productivity"
     }
   ]

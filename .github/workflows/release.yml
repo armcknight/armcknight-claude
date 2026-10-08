@@ -5,7 +5,7 @@ name: release
 #
 # The tag is bookkeeping. Claude Code installs this plugin by cloning the repo
 # and tracking main — tags are never fetched — so what actually reaches a user
-# is the `version` in plugins/claude-armcknight/.claude-plugin/plugin.json on
+# is the `version` in plugins/armcknight-claude/.claude-plugin/plugin.json on
 # main. The release job fails if the tag and that version disagree.
 
 on:
@@ -20,5 +20,5 @@ jobs:
       contents: write
     uses: armcknight/workflows/.github/workflows/claude-plugin-release.yml@main
     with:
-      plugin-path: plugins/claude-armcknight
+      plugin-path: plugins/armcknight-claude
       prerelease: ${{ contains(github.ref_name, '-') }}

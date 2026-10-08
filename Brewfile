@@ -14,10 +14,10 @@
 tap "dorkitude/linctl"
 tap "armcknight/tools"
 
-brew "dorkitude/linctl/linctl" # Linear CLI: /claude-armcknight:start, :pr, :merge, :finish
+brew "dorkitude/linctl/linctl" # Linear CLI: /armcknight-claude:start, :pr, :merge, :finish
 brew "direnv"                  # supplies the Linear token to every linctl call
-brew "gh"                      # /claude-armcknight:pr opens PRs and reads CI status
+brew "gh"                      # /armcknight-claude:pr opens PRs and reads CI status
 
-cask "armcknight/tools/work"   # workr: the `work` binary, worktree and tmux teardown for /claude-armcknight:finish
+cask "armcknight/tools/work"   # workr: the `work` binary, worktree and tmux teardown for /armcknight-claude:finish
 cask "armcknight/tools/tools"  # vrsn and prepare-release, for `make patch` and `make release`.
                                # 4.4.0 or later — earlier ones have no --pattern and cannot read the JSON manifest.
