@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] 2026-10-08
+
 ### Changed
 - **Breaking:** the plugin is renamed from `claude-armcknight` to `armcknight-claude`, so every command moves from `/claude-armcknight:<command>` to `/armcknight-claude:<command>`. Claude Code now reserves plugin names that start with `claude-`, and `claude plugin validate` rejected the old one, which blocked every release. The marketplace (`armcknight`) and the repository keep their names.
 
