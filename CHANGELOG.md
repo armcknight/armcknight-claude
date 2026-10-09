@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- The repository is renamed from `armcknight/claude-armcknight` to `armcknight/armcknight-claude` to match the plugin name. GitHub redirects the old URL, so existing marketplace installs continue to work. For new installs, use `/plugin marketplace add armcknight/armcknight-claude`.
+
 ## [0.2.1] 2026-10-08
 
 ### Fixed

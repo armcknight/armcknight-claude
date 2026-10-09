@@ -1,18 +1,18 @@
-# claude-armcknight
+# armcknight-claude
 
 [Claude Code](https://claude.com/claude-code) plugins by Andrew McKnight, distributed as a plugin marketplace.
 
 ## Install
 
 ```
-/plugin marketplace add armcknight/claude-armcknight
+/plugin marketplace add armcknight/armcknight-claude
 /plugin install armcknight-claude@armcknight
 ```
 
 To work on the plugins locally, add this checkout as a directory marketplace instead:
 
 ```
-/plugin marketplace add /path/to/claude-armcknight
+/plugin marketplace add /path/to/armcknight-claude
 ```
 
 ## Plugins

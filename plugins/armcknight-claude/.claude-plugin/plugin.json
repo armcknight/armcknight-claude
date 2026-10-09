@@ -8,8 +8,8 @@
     "email": "git@andrew.mcknight.io",
     "url": "https://mcknight.io"
   },
-  "homepage": "https://github.com/armcknight/claude-armcknight",
-  "repository": "https://github.com/armcknight/claude-armcknight",
+  "homepage": "https://github.com/armcknight/armcknight-claude",
+  "repository": "https://github.com/armcknight/armcknight-claude",
   "license": "Apache-2.0",
   "keywords": ["linear", "git", "worktree", "pull-request", "workflow"]
 }
