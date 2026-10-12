@@ -26,7 +26,7 @@ An issue-to-merge workflow. Each command is one step of the loop this repository
 | `/armcknight-claude:start` | Read the Linear issue matching the current branch, move it to In Progress, check assignment, and write a plan. Does nothing on `main`. |
 | `/armcknight-claude:review` | Diff the branch against a freshly fetched base branch. Look for tests, READMEs and changelog entries that need updating, and for code orphaned by the change. |
 | `/armcknight-claude:commit` | Run `/armcknight-claude:review`, then stage and commit in [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) format. |
-| `/armcknight-claude:pr` | Run `/armcknight-claude:review`, commit outstanding work, open a PR titled and described from the Linear issue, then iterate until CI is green and review comments are addressed. Accepts `--autonomous` and `--draft`. |
+| `/armcknight-claude:pr` | Run `/armcknight-claude:review`, commit outstanding work, open a PR titled and described from the Linear issue, then iterate until CI is green. Address the PR author's review comments, and flag comments from other reviewers for manual handling. Accepts `--autonomous` and `--draft`. |
 | `/armcknight-claude:merge` | Squash-merge a branch into `main` with a generated conventional-commit message, review the result, update the issue, and refresh affected READMEs. |
 | `/armcknight-claude:finish` | Close out a work stream: tear down the worktree, mark the Linear issue Done, and run `/armcknight-claude:cleanup`. |
 | `/armcknight-claude:cleanup` | Remove the Xcode DerivedData directory belonging to a worktree. |
