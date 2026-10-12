@@ -25,6 +25,6 @@ Then:
     - If `$ARGUMENTS` contains `--draft`, add `--draft` to the `gh pr create` invocation so the PR is opened in draft state.
 - Mark the associated linear issue, if there is one, as "In Review" status using `linctl`.
 - After opening the PR, keep an eye on any CI checks and iterate to fix breakages until they're all green.
-- Once CI passes, add a comment to the PR with `gh`: `@sentry review` to initiate a Seer review. Wait until the action completes, then check for any comments left by Seer on the PR, and address them in a new commit.
+- Once CI passes, if the repo is owned by `getsentry` (check with `gh repo view --json owner --jq .owner.login`), add a comment to the PR with `gh`: `@sentry review` to initiate a Seer review. Wait until the action completes, then check for any comments left by Seer on the PR, and address them in a new commit. In a repo with a different owner, do not comment `@sentry review`.
     - Important: If any review comments are left by humans, and not just cursor or sentry, flag them to me for manual handling. Do not reply to humans.
 - Do another round of CI iteration until all checks pass.

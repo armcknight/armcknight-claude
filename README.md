@@ -56,7 +56,7 @@ make init
 These commands were written for one person's setup and published as a reference. Read them before you install them — they are short, and they are opinionated in ways that will not suit every project.
 
 - **Branch names encode a Linear issue.** `/armcknight-claude:start` derives the issue ID from the current branch and does nothing if it cannot.
-- **`/armcknight-claude:pr` is Sentry-specific in one step.** After CI passes it comments `@sentry review` to trigger a Seer review, then addresses Seer's comments. On a non-Sentry repository, delete that step.
+- **`/armcknight-claude:pr` is Sentry-specific in one step.** After CI passes, in a repository that `getsentry` owns, it comments `@sentry review` to trigger a Seer review, then addresses Seer's comments. In a repository with a different owner, it skips that step.
 - **`/armcknight-claude:review` names specific MCP servers** — XcodeBuildMCP, xcode-index-mcp, swiftlens and Sentry. Without them, those checks are skipped.
 - **`/armcknight-claude:cleanup` is Xcode-only.** It removes a DerivedData directory and does nothing useful for a non-Xcode project.
 - **`/armcknight-claude:start` checks that the issue is assigned to you** and reports if it was previously assigned to somebody else.
