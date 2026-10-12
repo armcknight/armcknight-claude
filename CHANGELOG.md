@@ -9,8 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - The repository is renamed from `armcknight/claude-armcknight` to `armcknight/armcknight-claude` to match the plugin name. GitHub redirects the old URL, so existing marketplace installs continue to work. For new installs, use `/plugin marketplace add armcknight/armcknight-claude`.
-- `pr` comments `@sentry review` only in a repository that `getsentry` owns. In a repository with a different owner, it skips the Seer review step.
-- `pr` addresses review comments from the PR author in a new commit, and flags comments from other humans for manual handling. Before, it flagged all human comments, and only in the Seer review step, so it skipped them in a repository that `getsentry` does not own.
+- **Breaking:** `pr` comments `@sentry review` only in a repository that `getsentry` owns. In a repository with a different owner, it skips the Seer review step.
+- **Breaking:** `pr` addresses review comments from the PR author in a new commit, and flags comments from other humans for manual handling. Before, it flagged all human comments, and only in the Seer review step, so it skipped them in a repository that `getsentry` does not own.
 
 ## [0.2.1] 2026-10-08
 
